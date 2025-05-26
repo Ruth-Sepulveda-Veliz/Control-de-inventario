@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Inventario</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>📦 Panel de Inventario</h1>
+
+  <div class="formulario">
+    <input type="text" id="nombre" placeholder="Nombre del producto" />
+    <input type="number" id="cantidad" placeholder="Cantidad" />
+    <button onclick="agregarProducto()">Agregar</button>
+  </div>
+
+  <input type="text" id="buscador" placeholder="Buscar producto..." onkeyup="buscarProducto()" />
+    
+    <select id="categoria">
+      <option value="">Categoría</option>
+      <option value="Alimentos">Alimentos</option>
+      <option value="Ropa">Ropa</option>
+      <option value="Electrónica">Electrónica</option>
+      <option value="Limpieza">Limpieza</option>
+    </select>
+
+    <input type="date" id="fechaIngreso">
+    <input type="date" id="fechaEgreso">
+    <input type="date" id="fechaExpiracion">
+
+    <button id="btn-agregar" onclick="agregarProducto()">Agregar</button>
+  </div>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Categoría</th>
+        <th>Ingreso</th>
+        <th>Egreso</th>
+        <th>Expiración</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-productos"></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
