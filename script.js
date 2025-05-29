@@ -14,15 +14,15 @@ function cargarDesdeLocalStorage() {
 }
 
 function agregarProducto() {
-  const nombre = document.getElementById("nombre").value.trim();
-  const cantidad = parseInt(document.getElementById("cantidad").value);
+  const nombre = document.getElementById("nombre").value;
+  const cantidad = document.getElementById("cantidad").value;
   const categoria = document.getElementById("categoria").value;
   const fechaIngreso = document.getElementById("fechaIngreso").value;
   const fechaEgreso = document.getElementById("fechaEgreso").value;
   const fechaExpiracion = document.getElementById("fechaExpiracion").value;
 
-  if (nombre === "" || isNaN(cantidad)) {
-    alert("Por favor completa todos los campos obligatorios.");
+  if (!nombre || !cantidad) {
+    alert("Por favor, complete el nombre y la cantidad.");
     return;
   }
 
@@ -47,6 +47,29 @@ function agregarProducto() {
   mostrarProductos();
   limpiarFormulario();
 }
+function mostrarProductos() {
+  const tabla = document.getElementById("tabla-productos");
+  tabla.innerHTML = "";
+
+  productos.forEach((prod, index) => {
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td data-label="Nombre">${prod.nombre}</td>
+      <td data-label="Cantidad">${prod.cantidad}</td>
+      <td data-label="Categoría">${prod.categoria}</td>
+      <td data-label="Ingreso">${prod.fechaIngreso}</td>
+      <td data-label="Egreso">${prod.fechaEgreso}</td>
+      <td data-label="Expiración">${prod.fechaExpiracion}</td>
+      <td data-label="Acciones">
+        <button onclick="editarProducto(${index})">Editar</button>
+        <button onclick="eliminarProducto(${index})">Eliminar</button>
+      </td>
+    `;
+    tabla.appendChild(fila);
+  });
+}
+
+
 
 function mostrarProductos() {
   const tabla = document.getElementById("tabla-productos");
